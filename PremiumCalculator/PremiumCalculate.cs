@@ -24,12 +24,16 @@ namespace PremiumCalculator
             _ageSumMappingList = new CalculationInitialise().Rates; 
         }
 
+        #region Public Methods
+
         public double CalculatePremium()
         {
             Calculate();
             return _premium;
         }
+        #endregion
 
+        #region Private Methods
         private void Calculate()
         {
             RateCalculator rateCalc = new RateCalculator(_age, _sumAssured, _ageSumMappingList);
@@ -56,6 +60,6 @@ namespace PremiumCalculator
         {
             return (netPremium * INITIAL_COMMISSION_PERCENTAGE) / 100;
         }
-        
+        #endregion
     }
 }
