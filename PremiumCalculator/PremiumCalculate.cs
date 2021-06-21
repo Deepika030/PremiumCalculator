@@ -17,11 +17,11 @@ namespace PremiumCalculator
 
         #endregion
         
-        public PremiumCalculate(int age, int sumAssured)
+        public PremiumCalculate(int age, int sumAssured, List<AgeSumRate> rates)
         {
             _age = age;
             _sumAssured = sumAssured;
-            _ageSumMappingList = new CalculationInitialise().Rates; 
+            _ageSumMappingList = rates;
         }
 
         #region Public Methods

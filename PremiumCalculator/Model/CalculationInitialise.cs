@@ -26,7 +26,7 @@ namespace PremiumCalculator.Model
             {
                 new AgeGroup() { AgeGroupId = 1, FromAge = 18, ToAge = 30 },
                 new AgeGroup() { AgeGroupId = 2, FromAge = 31, ToAge = 50 },
-                new AgeGroup() { AgeGroupId = 3, FromAge = 51, ToAge = 199 }
+                new AgeGroup() { AgeGroupId = 3, FromAge = 51, ToAge = 65 }
             };
         }
 

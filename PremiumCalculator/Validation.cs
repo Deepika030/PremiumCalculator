@@ -1,31 +1,33 @@
-﻿using System;
+﻿using PremiumCalculator.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace PremiumCalculator
 {
     public class Validation
     {
-        private int _age;
-        private int _sumAssured;
-        public Validation(int age, int sumAssured)
+        private List<AgeGroup> _ageGroups;
+        private List<SumAssured> _sumAssureds;
+        public Validation(List<AgeGroup> ageGroups, List<SumAssured> sumAssureds)
         {
-            _age = age;
-            _sumAssured = sumAssured;
+            _ageGroups = ageGroups;
+            _sumAssureds = sumAssureds;            
         }
 
-        public bool Validate()
+        public bool Validate(int age, int sumAssured)
         {
-            if (_age < 0)
+            if (age < 0)
                 throw new NegativeAgeException();            
 
-            if (_age < 18 || _age > 65)
+            if (age < _ageGroups.Min(x => x.FromAge) || age > _ageGroups.Max(x => x.ToAge))
                 throw new AgeOutofRangeException();
 
-            if (_sumAssured < 0)
+            if (sumAssured < 0)
                 throw new NegativeSumAssuredException();
 
-            if (_sumAssured < 25000 || _sumAssured > 500000)
+            if (sumAssured < _sumAssureds.Min(x => x.FromSumValue) || sumAssured > _sumAssureds.Max(x => x.ToSumValue))
                 throw new SumAssuredOutOfRange();            
 
             return true;

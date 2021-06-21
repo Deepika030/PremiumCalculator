@@ -10,8 +10,7 @@ namespace PremiumCalculator.Model
     {
         public DbSet<AgeGroup> AgeGroups { get; set; }
         public DbSet<SumAssured> SumAssureds { get; set; }
-
-
+        
     }
 
     public class AgeGroup

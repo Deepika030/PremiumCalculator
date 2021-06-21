@@ -43,8 +43,17 @@ namespace PremiumCalculator.Test
         public void PremiumValue(int age, int sumAssured, double result)
         {
             LifePremium pc = new LifePremium();
-            AgeSumEV ageSumEV = pc.GetPremium(age, sumAssured);
+            PremiumResponse ageSumEV = pc.GetPremium(age, sumAssured);
             Assert.AreEqual(result, ageSumEV.Premium);
+        }
+
+        [Test]
+        [TestCase(18, 25000)]        
+        public void SumAssuredAdjusted(int age, int sumAssured)
+        {
+            LifePremium pc = new LifePremium();
+            PremiumResponse ageSumEV = pc.GetPremium(age, sumAssured);
+            Assert.AreEqual(true, ageSumEV.SumAssuredAdjusted);
         }
 
     }
